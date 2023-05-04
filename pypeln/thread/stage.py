@@ -49,7 +49,7 @@ class Stage(pypeln_utils.BaseStage[T], tp.Iterable[T]):
         )
 
         for i in range(self.workers):
-            worker = Worker(
+            yield Worker(
                 process_fn=self.process_fn,
                 index=i,
                 timeout=self.timeout,
@@ -59,9 +59,6 @@ class Stage(pypeln_utils.BaseStage[T], tp.Iterable[T]):
                 on_done=self.on_done,
                 f_args=self.f_args,
             )
-
-            yield worker
-
         for dependency in self.dependencies:
             yield from dependency.build(built, input_queue, main_queue)
 

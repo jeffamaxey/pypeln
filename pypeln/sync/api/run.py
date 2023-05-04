@@ -27,12 +27,9 @@ def run(*stages: tp.Union[Stage[A], tp.Iterable[A]], maxsize: int = 0) -> None:
 
     """
 
-    if len(stages) == 0:
+    if not stages:
         return
     elif len(stages) == 1:
         stage = to_iterable(stages[0], maxsize=maxsize)
     else:
         stage = concat(list(stages), maxsize=maxsize)
-
-    for _ in stage:
-        pass

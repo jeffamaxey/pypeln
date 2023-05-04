@@ -22,7 +22,7 @@ def limited_as_completed(coros, limit):
                         pass
                     return f.result()
 
-    while len(futures) > 0:
+    while futures:
         yield first_to_finish()
 
 

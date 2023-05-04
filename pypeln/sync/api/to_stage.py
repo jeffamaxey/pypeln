@@ -6,7 +6,4 @@ from pypeln.utils import A
 
 def to_stage(obj: tp.Union[Stage[A], tp.Iterable[A]], maxsize: int) -> Stage[A]:
 
-    if isinstance(obj, Stage):
-        return obj
-    else:
-        return from_iterable(obj, maxsize=maxsize)
+    return obj if isinstance(obj, Stage) else from_iterable(obj, maxsize=maxsize)

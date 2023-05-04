@@ -45,9 +45,8 @@ def to_iterable(
     if isinstance(stage, pypeln_utils.Undefined):
         return pypeln_utils.Partial(lambda stage: to_iterable(stage, maxsize=maxsize))
 
-    if isinstance(stage, Stage):
-        iterable = stage.to_iterable(maxsize=maxsize, return_index=return_index)
-    else:
-        iterable = stage
-
-    return iterable
+    return (
+        stage.to_iterable(maxsize=maxsize, return_index=return_index)
+        if isinstance(stage, Stage)
+        else stage
+    )

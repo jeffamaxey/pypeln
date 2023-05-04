@@ -41,7 +41,7 @@ class TestEach(TestCase):
             else:
                 assert nums_pl == nums
 
-            assert nums_pl == []
+            assert not nums_pl
 
     @hp.given(nums=st.lists(st.integers()))
     @hp.settings(max_examples=MAX_EXAMPLES)

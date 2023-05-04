@@ -262,7 +262,7 @@ async def test_flat_map_square_workers_async_3(nums: tp.List[int]):
     nums_pl = pl.task.flat_map(_generator_async, nums_pl, workers=3, timeout=0.01)
     nums_pl = await nums_pl
 
-    assert nums_py == [] or sorted(nums_pl) != sorted(nums_py)
+    assert not nums_py or sorted(nums_pl) != sorted(nums_py)
 
 
 @hp.given(nums=st.lists(st.integers()))
@@ -294,7 +294,7 @@ async def test_flat_map_square_workers_async_4(nums: tp.List[int]):
     )
     nums_pl = await nums_pl
 
-    assert nums_py == [] or sorted(nums_pl) == sorted(nums_py)
+    assert not nums_py or sorted(nums_pl) == sorted(nums_py)
 
 
 @hp.given(nums=st.lists(st.integers()))
@@ -326,4 +326,4 @@ async def test_flat_map_square_workers_async_5(nums: tp.List[int]):
     )
     nums_pl = await nums_pl
 
-    assert nums_py == [] or sorted(nums_pl) == sorted(nums_py)
+    assert not nums_py or sorted(nums_pl) == sorted(nums_py)

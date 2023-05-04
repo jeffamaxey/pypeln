@@ -13,7 +13,7 @@ def to_stage(
     if isinstance(obj, Stage):
         return obj
 
-    elif isinstance(obj, tp.Iterable) or isinstance(obj, tp.AsyncIterable):
+    elif isinstance(obj, (tp.Iterable, tp.AsyncIterable)):
         return from_iterable(obj, maxsize=maxsize)
 
     else:

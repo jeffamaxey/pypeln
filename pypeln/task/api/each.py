@@ -150,6 +150,3 @@ def each(
 
     if not run:
         return stage
-
-    for _ in stage:
-        pass

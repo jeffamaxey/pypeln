@@ -22,4 +22,4 @@ def test_each_list(nums):
     nums_pl = pl.sync.each(lambda x: x, nums)
     nums_pl = list(nums_pl)
 
-    assert nums_pl == []
+    assert not nums_pl

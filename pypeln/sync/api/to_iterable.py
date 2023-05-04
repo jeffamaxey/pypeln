@@ -47,9 +47,8 @@ def to_iterable(
             lambda stage: to_iterable(stage, maxsize=maxsize, return_index=return_index)
         )
 
-    if isinstance(stage, Stage):
-        iterable = stage.to_iterable(maxsize=maxsize, return_index=return_index)
-    else:
-        iterable = stage
-
-    return iterable
+    return (
+        stage.to_iterable(maxsize=maxsize, return_index=return_index)
+        if isinstance(stage, Stage)
+        else stage
+    )

@@ -151,7 +151,7 @@ def test_map_square_event_end(nums):
     time.sleep(0.1)
 
     assert namespace.x == 2
-    assert namespace.done == True
+    assert namespace.done
     assert namespace.active_workers == 0
 
 

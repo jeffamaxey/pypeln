@@ -6,10 +6,7 @@ total = 300_000
 
 
 def f(x):
-    i = 0
-    for _ in range(500_000):
-        i += 1
-
+    i = len(range(500_000))
     return x * 2
 
 

@@ -7,7 +7,7 @@ import pypeln as pl
 
 
 limit = 1000
-urls = ("http://localhost:8080/{}".format(i) for i in range(int(sys.argv[1])))
+urls = (f"http://localhost:8080/{i}" for i in range(int(sys.argv[1])))
 
 
 async def fetch(url, session):

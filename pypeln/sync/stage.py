@@ -40,7 +40,7 @@ class Stage(pypeln_utils.BaseStage[T], tp.Iterable[T]):
             for dependency in self.dependencies
         ]
 
-        while len(iterators) > 0:
+        while iterators:
             for iterator in tuple(iterators):
                 try:
                     yield next(iterator)

@@ -62,15 +62,14 @@ class IterableQueue(Queue, tp.Generic[T], tp.Iterable[T]):
     # threads have to be active when being terminated, implementing
     # put in this way ensures the thread constantly active.
     def put(self, x: T, block: bool = True, timeout: tp.Optional[float] = None):
-        if block and timeout is None:
-            while True:
-                try:
-                    super().put(x, block=True, timeout=pypeln_utils.TIMEOUT)
-                    return
-                except Full as e:
-                    pass
-        else:
+        if not block or timeout is not None:
             return super().put(x, block=False, timeout=timeout)
+        while True:
+            try:
+                super().put(x, block=True, timeout=pypeln_utils.TIMEOUT)
+                return
+            except Full as e:
+                pass
 
     def clear(self):
         try:
